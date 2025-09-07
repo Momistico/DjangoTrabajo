@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+{% block title %}Eliminar Producto{% endblock %}
+
+{% block content %}
+  <div class="box has-text-centered">
+    <h2 class="title">¿Estás seguro que quieres eliminar este producto?</h2>
+    <p><strong>{{ object.name }}</strong> - ${{ object.price }}</p>
+    <br>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="button is-danger">🗑 Eliminar</button>
+      <a href="{% url 'catalog:product-detail' object.id %}" class="button is-light">Cancelar</a>
+    </form>
+  </div>
+{% endblock %}

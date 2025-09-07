@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+{% block title %}Detalle{% endblock %}
+
+{% block content %}
+  <div class="box">
+    <h2 class="title">{{ product.name }}</h2>
+    <p class="subtitle">Precio: <strong>${{ product.price }}</strong></p>
+    <p>{{ product.description }}</p>
+    <p><em>Publicado el {{ product.created_at|date:"d/m/Y H:i" }}</em></p>
+  </div>
+
+  <a class="button is-light" href="{% url 'catalog:product-list' %}">⬅ Volver</a>
+  <a class="button is-warning" href="{% url 'catalog:product-edit' product.id %}">✏ Editar</a>
+  <a class="button is-danger" href="{% url 'catalog:product-delete' product.id %}">🗑 Eliminar</a>
+{% endblock %}

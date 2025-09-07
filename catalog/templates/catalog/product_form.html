@@ -1,0 +1,15 @@
+{% extends "catalog/base.html" %}
+{% block title %}Formulario{% endblock %}
+
+{% block content %}
+  <h2 class="title">{% if form.instance.pk %}Editar Producto{% else %}Agregar Producto{% endif %}</h2>
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button is-primary" type="submit">
+      {% if form.instance.pk %}💾 Guardar cambios{% else %}➕ Crear{% endif %}
+    </button>
+    <a href="{% url 'catalog:product-list' %}" class="button is-light"> ❌Cancelar</a>
+  </form>
+{% endblock %}

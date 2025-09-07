@@ -1,0 +1,36 @@
+{% extends "catalog/base.html" %}
+{% block title %}Listado de Productos{% endblock %}
+
+{% block content %}
+  <div class="level">
+    <div class="level-left">
+      <h2 class="title">Listado de Productos</h2>
+    </div>
+    <div class="level-right">
+      <a class="button is-primary" href="{% url 'catalog:product-add' %}">
+        + Agregar Producto
+      </a>
+    </div>
+  </div>
+  <hr>
+
+  <div class="columns is-multiline">
+    {% for product in products %}
+      <div class="column is-one-third">
+        <div class="card">
+          <div class="card-content">
+            <p class="title is-5">
+              <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
+            </p>
+            <p class="subtitle is-6">${{ product.price }}</p>
+            <p>{{ product.description|truncatechars:100 }}</p>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="notification is-warning">
+        No hay productos aún. <a href="{% url 'catalog:product-add' %}">Agrega el primero</a>.
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
