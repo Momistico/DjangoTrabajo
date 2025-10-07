@@ -1,36 +1,40 @@
-{% extends "catalog/base.html" %}
-{% block title %}Listado de Productos{% endblock %}
+{% extends 'catalog/base.html' %}
+{% block title %}Lista de Productos{% endblock %}
 
 {% block content %}
-  <div class="level">
-    <div class="level-left">
-      <h2 class="title">Listado de Productos</h2>
-    </div>
-    <div class="level-right">
-      <a class="button is-primary" href="{% url 'catalog:product-add' %}">
-        + Agregar Producto
-      </a>
-    </div>
-  </div>
-  <hr>
+<h1 class="title is-3 has-text-centered mb-5">📦 Lista de Productos</h1>
 
-  <div class="columns is-multiline">
-    {% for product in products %}
-      <div class="column is-one-third">
-        <div class="card">
-          <div class="card-content">
-            <p class="title is-5">
-              <a href="{{ product.get_absolute_url }}">{{ product.name }}</a>
-            </p>
-            <p class="subtitle is-6">${{ product.price }}</p>
-            <p>{{ product.description|truncatechars:100 }}</p>
-          </div>
-        </div>
-      </div>
-    {% empty %}
-      <div class="notification is-warning">
-        Vacio. <a href="{% url 'catalog:product-add' %}">Agrega el primer producto.</a>.
-      </div>
-    {% endfor %}
-  </div>
+<div class="table-container">
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Categoría</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>${{ product.price }}</td>
+        <td>{{ product.category }}</td>
+        <td>
+          <a href="{% url 'catalog:product-edit' product.id %}" class="button is-small is-info is-light">
+            <i class="fas fa-edit"></i> Editar
+          </a>
+          <a href="{% url 'catalog:product-delete' product.id %}" class="button is-small is-danger is-light">
+            <i class="fas fa-trash-alt"></i> Eliminar
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4" class="has-text-centered">No hay productos disponibles.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
