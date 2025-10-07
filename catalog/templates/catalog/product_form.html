@@ -2,7 +2,11 @@
 {% load widget_tweaks %}
 {% block title %}Agregar Producto{% endblock %}
 
+
+
 {% block content %}
+
+
 <div class="box">
   <h2 class="title is-4">➕ Agregar Nuevo Producto</h2>
 
@@ -10,22 +14,25 @@
     {% csrf_token %}
     <div class="field">
       <label class="label">Nombre</label>
-      <div class="control">
+      <div class="control has-icons-left">
         {{ form.name|add_class:"input" }}
+        <span class="icon is-small is-left"><i class="fas fa-tag"></i></span>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Precio</label>
-      <div class="control">
+      <div class="control has-icons-left">
         {{ form.price|add_class:"input" }}
+        <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Categoría</label>
-      <div class="control">
+      <div class="control has-icons-left">
         {{ form.category|add_class:"input" }}
+        <span class="icon is-small is-left"><i class="fas fa-layer-group"></i></span>
       </div>
     </div>
 
