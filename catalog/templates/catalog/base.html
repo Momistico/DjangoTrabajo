@@ -25,29 +25,40 @@
 <body style="font-family: 'Roboto', sans-serif; background-color: #f3f7f8;">
 
   <!-- Navbar -->
-  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand" style="width: 100%; display: flex; justify-content: center;">
-      <a class="navbar-item" href="{% url 'catalog:product-list' %}">
-        <strong><i class="fas fa-box-open"></i> Evaluación 2 BackEnd</strong>
-      </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
+  <nav class="navbar has-shadow is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{% url 'catalog:product-list' %}">
+      <span class="icon-text has-text-white">
+        <span class="icon"><i class="fas fa-box-open"></i></span>
+        <span><strong>Evaluación 2 BackEnd</strong></span>
+      </span>
+    </a>
 
-    <div id="navbarMenu" class="navbar-menu" style="justify-content: center; display: flex;">
-      <div class="navbar-start">
-        <a class="navbar-item" href="{% url 'catalog:product-list' %}">
-          <i class="fas fa-list-ul"></i> Lista de Productos
-        </a>
-        <a class="navbar-item" href="{% url 'catalog:product-add' %}">
-          <i class="fas fa-plus-circle"></i> Agregar Producto
-        </a>
-      </div>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="{% url 'catalog:product-list' %}">
+        <span class="icon-text">
+          <span class="icon"><i class="fas fa-list-ul"></i></span>
+          <span>Lista de Productos</span>
+        </span>
+      </a>
+      <a class="navbar-item" href="{% url 'catalog:product-add' %}">
+        <span class="icon-text">
+          <span class="icon"><i class="fas fa-plus-circle"></i></span>
+          <span>Agregar Producto</span>
+        </span>
+      </a>
     </div>
-  </nav>
+  </div>
+</nav>
+
 
   <!-- Mensajes -->
   <section class="section pt-4">
