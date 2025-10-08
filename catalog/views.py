@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import Product
+from .forms import ProductForm   # 👈  NUEVA IMPORTACIÓN
 
 class ProductListView(ListView):
     model = Product
@@ -14,12 +15,13 @@ class ProductDetailView(DetailView):
 
 class ProductCreateView(CreateView):
     model = Product
-    fields = ['name', 'description', 'price']
+    form_class = ProductForm        # 👈  usar el formulario personalizado
     template_name = "catalog/product_form.html"
+    success_url = reverse_lazy('catalog:product-list')  # redirige después de guardar
 
 class ProductUpdateView(UpdateView):
     model = Product
-    fields = ['name', 'description', 'price']
+    form_class = ProductForm        # 👈  usar el mismo formulario
     template_name = "catalog/product_form.html"
     success_url = reverse_lazy('catalog:product-list')
 

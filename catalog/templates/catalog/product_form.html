@@ -2,50 +2,77 @@
 {% load widget_tweaks %}
 {% block title %}Agregar Producto{% endblock %}
 
-
-
 {% block content %}
 
+<!-- Sección hero, igual que en product_list.html -->
+<section class="hero is-info is-medium mb-5">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-3 has-text-centered mb-5">➕ Agregar Nuevo Producto</h1>
+      <h2 class="subtitle">Completa la información del producto</h2>
+    </div>
+  </div>
+</section>
 
-<div class="box">
-  <h2 class="title is-4">➕ Agregar Nuevo Producto</h2>
+<!-- Contenedor principal centrado -->
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box p-5">
+        <form method="post">
+          {% csrf_token %}
 
-  <form method="post">
-    {% csrf_token %}
-    <div class="field">
-      <label class="label">Nombre</label>
-      <div class="control has-icons-left">
-        {{ form.name|add_class:"input" }}
-        <span class="icon is-small is-left"><i class="fas fa-tag"></i></span>
+          <!-- Nombre -->
+          <div class="field">
+            <label class="label">Nombre</label>
+            <div class="control has-icons-left">
+              {{ form.name|add_class:"input" }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-tag"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Precio -->
+          <div class="field">
+            <label class="label">Precio</label>
+            <div class="control has-icons-left">
+              {{ form.price|add_class:"input" }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-dollar-sign"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Categoría -->
+          <div class="field">
+            <label class="label">Categoría</label>
+            <div class="control has-icons-left">
+              {{ form.category|add_class:"input" }}
+              <span class="icon is-small is-left">
+                <i class="fas fa-layer-group"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Botones -->
+          <div class="field is-grouped is-grouped-centered mt-5">
+            <p class="control">
+              <button type="submit" class="button is-success is-light">
+                <i class="fas fa-check"></i> Guardar
+              </button>
+            </p>
+            <p class="control">
+              <a href="{% url 'catalog:product-list' %}" class="button is-link is-light">
+                <i class="fas fa-arrow-left"></i> Volver
+              </a>
+            </p>
+          </div>
+
+        </form>
       </div>
     </div>
-
-    <div class="field">
-      <label class="label">Precio</label>
-      <div class="control has-icons-left">
-        {{ form.price|add_class:"input" }}
-        <span class="icon is-small is-left"><i class="fas fa-dollar-sign"></i></span>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="label">Categoría</label>
-      <div class="control has-icons-left">
-        {{ form.category|add_class:"input" }}
-        <span class="icon is-small is-left"><i class="fas fa-layer-group"></i></span>
-      </div>
-    </div>
-
-    <div class="field is-grouped mt-4">
-      <div class="control">
-        <button type="submit" class="button is-success">
-          <i class="fas fa-check"></i> Guardar
-        </button>
-      </div>
-      <div class="control">
-        <a href="{% url 'catalog:product-list' %}" class="button is-light">Cancelar</a>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
+
 {% endblock %}
