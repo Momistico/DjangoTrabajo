@@ -1,19 +1,38 @@
 {% extends "catalog/base.html" %}
 {% block title %}Eliminar Producto{% endblock %}
 
-
-
-
-
 {% block content %}
-  <div class="box has-text-centered">
-    <h2 class="title">¿Estás seguro que quieres eliminar este producto?</h2>
-    <p><strong>{{ object.name }}</strong> - ${{ object.price }}</p>
-    <br>
-    <form method="post">
-      {% csrf_token %}
-      <button type="submit" class="button is-danger">🗑 Eliminar</button>
-      <a href="{% url 'catalog:product-detail' object.id %}" class="button is-light">❌Cancelar</a>
-    </form>
+<section class="hero is-danger is-medium mb-5">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-3">🗑 Eliminar Producto</h1>
+      <h2 class="subtitle">¿Estás seguro que deseas eliminar este producto?</h2>
+    </div>
   </div>
+</section>
+
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box has-text-centered p-5">
+        <p class="is-size-5 mb-4">
+          <strong>{{ object.name }}</strong><br>
+          <span class="has-text-grey">Precio: ${{ object.price }}</span>
+        </p>
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="buttons is-centered">
+            <button type="submit" class="button is-danger is-light">
+              <i class="fas fa-trash-alt"></i> Eliminar
+            </button>
+            <a href="{% url 'catalog:product-detail' object.id %}" class="button is-danger is-light">
+              <i class="fas fa-ban"></i> Cancelar
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

@@ -24,7 +24,7 @@
 </head>
 <body style="font-family: 'Roboto', sans-serif; background-color: #f3f7f8;">
 
-  <!-- Navbar -->
+  
   <nav class="navbar has-shadow is-primary" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="{% url 'catalog:product-list' %}">
@@ -42,25 +42,46 @@
   </div>
 
   <div id="navbarMenu" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href="{% url 'catalog:product-list' %}">
-        <span class="icon-text">
-          <span class="icon"><i class="fas fa-list-ul"></i></span>
-          <span>Lista de Productos</span>
-        </span>
-      </a>
-      <a class="navbar-item" href="{% url 'catalog:product-add' %}">
-        <span class="icon-text">
-          <span class="icon"><i class="fas fa-plus-circle"></i></span>
-          <span>Agregar Producto</span>
-        </span>
-      </a>
-    </div>
+  <div class="navbar-start">
+    <a class="navbar-item" href="{% url 'catalog:product-list' %}">
+      <span class="icon-text">
+        <span class="icon"><i class="fas fa-list-ul"></i></span>
+        <span>Lista de Productos</span>
+      </span>
+    </a>
+    <a class="navbar-item" href="{% url 'catalog:product-add' %}">
+      <span class="icon-text">
+        <span class="icon"><i class="fas fa-plus-circle"></i></span>
+        <span>Agregar Producto</span>
+      </span>
+    </a>
   </div>
-</nav>
+
+  <div class="navbar-end">
+    {% if user.is_authenticated %}
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <i class="fas fa-user-circle"></i> {{ user.username }}
+        </a>
+        <div class="navbar-dropdown is-right">
+          <a class="navbar-item" href="{% url 'catalog:logout' %}">
+            <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <div class="navbar-item">
+        <a class="button is-light" href="{% url 'catalog:login' %}">
+          <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</div>
 
 
-  <!-- Mensajes -->
+
+  
   <section class="section pt-4">
     <div class="container is-max-desktop has-text-centered">
       {% if messages %}
@@ -74,7 +95,7 @@
     </div>
   </section>
 
-  <!-- Contenido principal -->
+  
   <section class="section">
   <div class="container is-max-desktop has-text-centered">
     {% block content %}{% endblock %}
@@ -82,12 +103,21 @@
 </section>
 
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p><i class="fas fa-code"></i> CrissMendez • 2025</p>
-  </footer>
+  
+  <footer class="footer has-text-centered">
+  <div class="content">
+    <p>
+      <span class="icon is-small"><i class="fas fa-code"></i></span>
+      <strong>CrissMendez</strong> • 2025
+    </p>
+    <p>
+      <span class="icon is-small"><i class="fas fa-heart"></i></span>
+      Programación Back End
+    </p>
+  </div>
+</footer>
 
-  <!-- JS para navbar burger -->
+  
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);

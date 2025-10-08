@@ -1,0 +1,13 @@
+{% extends 'catalog/base.html' %}
+{% block title %}Iniciar sesión{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="title">🔐 Iniciar sesión</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button is-success">Entrar</button>
+  </form>
+</div>
+{% endblock %}

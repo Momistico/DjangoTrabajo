@@ -1,4 +1,4 @@
-/* 🎨 Fondo general */
+
 body {
   background-image: url('/static/img/fondo.jpg');
   background-size: cover;
@@ -7,7 +7,7 @@ body {
 }
 
 
-/* 🧭 Navbar mejorado */
+
 .navbar {
   background: linear-gradient(to right, #00c4a7, #209cee);
   color: white;
@@ -48,20 +48,20 @@ body {
   margin-right: 0.5rem;
 }
 
-/* 🦸 Hero section */
+
 .hero {
   border-radius: 8px;
   background-image: linear-gradient(to right, #00c4a7, #209cee);
   color: white;
 }
 
-/* 📝 Títulos */
+
 .title {
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
-/* ✅ Botones */
+
 .button.is-success {
   background-color: #00c4a7;
   border: none;
@@ -80,7 +80,7 @@ body {
   background-color: #1a8cd8;
 }
 
-/* 📊 Tabla */
+
 .table-container {
   margin-top: 2rem;
   display: flex;
@@ -100,7 +100,7 @@ body {
   vertical-align: middle;
 }
 
-/* 📥 Formulario */
+
 form {
   max-width: 600px;
   margin: 0 auto;
@@ -111,23 +111,64 @@ textarea {
   resize: vertical;
 }
 
-/* 📢 Mensajes */
+
 .notification {
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* 📦 Contenedor general */
+
 .container {
   margin: 0 auto;
   text-align: center;
 }
 
-/* 🧱 Footer */
+
 .footer {
-  background-color: rgba(255, 255, 255, 0.0); /* completamente transparente */
-  border-top: 1px solid rgba(255, 255, 255, 0.2); /* línea sutil */
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding: 2rem 1rem;
   text-align: center;
-  color: #fff; /* texto blanco para contraste */
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.footer .icon {
+  margin-right: 0.5rem;
+  color: #00c4a7;
+}
+
+.footer strong {
+  color: #209cee;
+}
+
+
+.navbar-link {
+  color: white !important;
+}
+
+.navbar-dropdown {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-dropdown .navbar-item {
+  color: #333;
+}
+
+.navbar-dropdown .navbar-item:hover {
+  background-color: #f0f0f0;
+}
+
+
+.navbar-item {
+  margin: 0 0.75rem; /
+}
+
+
+.navbar-item .icon-text {
+  align-items: center;
+  gap: 0.5rem;
 }
